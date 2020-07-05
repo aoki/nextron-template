@@ -23,6 +23,7 @@ if (isProd) {
     await mainWindow.loadURL("app://./index.html");
   } else {
     const port = process.argv[2];
+    process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = "1";
     await mainWindow.loadURL(`http://localhost:${port}/index`);
     mainWindow.webContents.openDevTools();
   }
