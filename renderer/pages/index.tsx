@@ -17,7 +17,7 @@ const IndexPage = () => {
           display: flex;
           justify-content: center;
           align-items: center;
-          height: 100%;
+          flex-grow: 1;
         }
         h1 {
           font-weight: 100;

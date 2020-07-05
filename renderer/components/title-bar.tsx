@@ -18,7 +18,6 @@ const TitleBar: FC<TitleBarProps> = ({ title }) => {
           -webkit-app-region: drag;
           min-height: 24px;
           width: 100%;
-          background: red;
         }
       `}</style>
     </div>
