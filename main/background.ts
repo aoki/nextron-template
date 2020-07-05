@@ -1,4 +1,7 @@
 import { app } from "electron";
+import installExtension, {
+  REACT_DEVELOPER_TOOLS,
+} from "electron-devtools-installer";
 import serve from "electron-serve";
 import { createWindow } from "./helpers";
 
@@ -23,7 +26,12 @@ if (isProd) {
     await mainWindow.loadURL("app://./index.html");
   } else {
     const port = process.argv[2];
+
+    installExtension([REACT_DEVELOPER_TOOLS])
+      .then((name) => console.log(name))
+      .catch((err) => console.log(err));
     process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = "1";
+
     await mainWindow.loadURL(`http://localhost:${port}/index`);
     mainWindow.webContents.openDevTools();
   }
