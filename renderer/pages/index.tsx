@@ -1,16 +1,21 @@
 import Head from "next/head";
-import React from "react";
+import React, { useContext } from "react";
+import { ThemeContext } from "../contexsts/theme-context";
 
 const IndexPage = () => {
+  const themeContext = useContext(ThemeContext)
+  const clickHandler = () => {
+    console.log("Click")
+    themeContext.setTheme(themeContext.theme.name === "light" ? "dark" : "light")
+  }
+
   return (
-    <div className="main">
+    <div className="main" onClick={clickHandler}>
       <Head>
         <title>Hello Nextron</title>
       </Head>
       <div>
-        <img src="/images/logo_electron.svg" id="electron-log" />
-        <h1> Electron + Next.js</h1>
-        <img src="/images/logo_nextjs.svg" id="nextjs-log" />
+        <h1> Electron + Next.js </h1>
       </div>
       <style jsx>{`
         .main {
@@ -20,16 +25,11 @@ const IndexPage = () => {
           flex-grow: 1;
         }
         h1 {
+          user-select: none;
           font-weight: 100;
           display: inline;
           margin-right: 0.5em;
           margin-left: 0.5em;
-        }
-        #electron-log {
-          height: 24px;
-        }
-        #nextjs-log {
-          height: 24px;
         }
       `}</style>
     </div>
